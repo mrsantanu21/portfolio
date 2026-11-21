@@ -1,0 +1,64 @@
+%% RailFlow Booking & Concurrency Lifecycle
+%% Traced directly from inventoryService.ts, bookings.ts, and payments.ts
+sequenceDiagram
+    autonumber
+    actor User as Passenger / Client
+    participant Client as React 19 Frontend
+    participant Route as Express Router & Zod Guard
+    participant Inv as Inventory Engine
+    participant DB as Prisma / SQLite DB
+    participant Pay as Payment Engine
+
+    User->>Client: Select Route (fromStation -> toStation)
+    Client->>Route: POST /api/bookings/hold (trainId, date, travelClass, passengers)
+    Route->>Route: Validate payload with Zod schemas
+
+    rect rgb(250, 250, 247)
+        Note over Route,DB: Stage 1: Segment-Aware Inventory Reservation (prisma.$transaction)
+        Route->>Inv: holdSeats(trainId, date, travelClass, count, userContext)
+        Inv->>DB: Fetch Active Allocations (status IN ['CONFIRMED', 'LOCKED'])
+        DB-->>Inv: Return existing allocations
+        Inv->>Inv: Segment Overlap Test:<br/>alloc.boardingSeq < toRS.sequence && alloc.alightingSeq > fromRS.sequence
+        alt No Seats Available
+            Inv-->>Route: Throw SeatAvailabilityError
+            Route-->>Client: 409 Conflict (Seats Exhausted)
+        else Available Seat Found
+            Inv->>DB: Insert SeatAllocations (status='LOCKED', holdExpiresAt=now+10m)
+            Inv->>DB: Create Booking (status='PENDING', expiresAt=now+10m)
+            DB-->>Inv: Locked Records Created
+            Inv-->>Route: Return Booking Reference & 10m TTL
+        end
+    end
+
+    Route-->>Client: 201 Created (bookingId, totalFare, holdExpiresAt)
+    Client-->>User: Render Countdown Timer & Payment Prompt
+
+    User->>Client: Submit Payment (Razorpay / Mock Simulation)
+    Client->>Route: POST /api/payments/verify (bookingId, idempotencyKey, signature)
+    
+    rect rgb(250, 250, 247)
+        Note over Route,DB: Stage 2: Idempotent Payment & PNR Generation ($transaction)
+        Route->>Pay: verifyPayment(idempotencyKey, bookingId)
+        Pay->>DB: Check Payment Idempotency Key
+        alt Key Already Exists & Processed
+            DB-->>Pay: Existing Transaction
+            Pay-->>Route: Return Cached Success
+        else New Verification
+            Pay->>Pay: Verify Signature / Hash
+            Pay->>DB: Check Booking Status == 'PENDING' & now < holdExpiresAt
+            alt Hold Expired
+                Pay->>DB: Release SeatAllocations (status='RELEASED')
+                Pay-->>Route: 410 Gone (Hold Expired)
+            else Valid Hold
+                Pay->>DB: Update Booking (status='CONFIRMED', pnr=generatePNR())
+                Pay->>DB: Update SeatAllocations (status='CONFIRMED')
+                Pay->>DB: Insert Payment Record (status='SUCCESS')
+                Pay->>DB: Log Audit Event (BOOKING_CONFIRMED)
+                DB-->>Pay: Commit Transaction
+                Pay-->>Route: Confirmation & PNR
+            end
+        end
+    end
+
+    Route-->>Client: 200 OK (pnr, confirmedSeats, receipt)
+    Client-->>User: Display Confirmed E-Ticket & PNR

@@ -1,0 +1,372 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 940" width="100%" height="100%" style="background-color: #f2f2ee; font-family: 'Plus Jakarta Sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <style>
+      .editorial-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; fill: #888884; text-transform: uppercase; }
+      .header-title { font-size: 26px; font-weight: 700; letter-spacing: -0.035em; fill: #111110; }
+      .header-desc { font-size: 13.5px; fill: #52524e; font-weight: 400; line-height: 1.5; }
+      .col-header { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; fill: #888884; text-transform: uppercase; }
+      .col-title { font-size: 16px; font-weight: 700; letter-spacing: -0.02em; fill: #111110; }
+      .card-box { fill: #ffffff; stroke: rgba(17, 17, 16, 0.12); stroke-width: 1px; rx: 8px; }
+      .card-box-accent { fill: #ffffff; stroke: #111110; stroke-width: 1.5px; rx: 8px; }
+      .card-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; fill: #888884; text-transform: uppercase; }
+      .card-name { font-size: 13px; font-weight: 700; fill: #111110; letter-spacing: -0.01em; }
+      .card-detail { font-size: 11px; fill: #52524e; line-height: 1.45; }
+      .tag-pill { fill: rgba(17, 17, 16, 0.05); stroke: rgba(17, 17, 16, 0.08); stroke-width: 1px; rx: 4px; }
+      .tag-text { font-size: 10px; font-weight: 500; fill: #111110; }
+      .status-pill { fill: rgba(16, 185, 129, 0.08); stroke: rgba(16, 185, 129, 0.3); stroke-width: 1px; rx: 9999px; }
+      .status-text { font-size: 9px; font-weight: 600; fill: #059669; }
+      .pulse-dot { fill: #10b981; }
+      .flow-arrow { stroke: #111110; stroke-width: 1.5px; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .flow-arrow-dashed { stroke: rgba(17, 17, 16, 0.35); stroke-width: 1.5px; stroke-dasharray: 4,4; fill: none; }
+      .protocol-pill { fill: #f2f2ee; stroke: rgba(17, 17, 16, 0.15); stroke-width: 1px; rx: 4px; }
+      .protocol-text { font-size: 9px; font-weight: 600; fill: #888884; letter-spacing: 0.06em; text-transform: uppercase; }
+      .kpi-title { font-size: 15px; font-weight: 700; fill: #111110; }
+      .kpi-desc { font-size: 10.5px; fill: #888884; }
+      .code-font { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; fill: #111110; }
+    </style>
+    <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#111110"/>
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#888884"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas Subtle Grid Lines -->
+  <line x1="60" y1="125" x2="1340" y2="125" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1" />
+  <line x1="60" y1="835" x2="1340" y2="835" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1" />
+
+  <!-- ====================================================================== -->
+  <!-- TOP EDITORIAL HEADER                                                   -->
+  <!-- ====================================================================== -->
+  <g transform="translate(60, 48)">
+    <text class="editorial-badge" x="0" y="0">[ ARCHITECTURE SPECIFICATION · VOL. 01 ]</text>
+    <text class="header-title" x="0" y="32">RAILFLOW · PRODUCTION SYSTEM ARCHITECTURE</text>
+    <text class="header-desc" x="0" y="56">Multi-tier railway operations platform featuring segment-aware berth allocation, atomic serializable transactions, controlled AI tooling, and multi-provider failover telemetry.</text>
+    
+    <!-- Meta badges on top right -->
+    <g transform="translate(970, -2)">
+      <rect class="tag-pill" x="0" y="0" width="130" height="24" rx="4"/>
+      <text class="tag-text" x="65" y="16" text-anchor="middle">TypeScript 5 · Express</text>
+      
+      <rect class="tag-pill" x="140" y="0" width="168" height="24" rx="4"/>
+      <text class="tag-text" x="224" y="16" text-anchor="middle">Prisma · SQLite (Serializable)</text>
+    </g>
+  </g>
+
+  <!-- ====================================================================== -->
+  <!-- COLUMN 01: CLIENT TIER                                                 -->
+  <!-- ====================================================================== -->
+  <g transform="translate(60, 155)">
+    <!-- Column Topline -->
+    <text class="col-header" x="0" y="0">01 / CLIENT TIER</text>
+    <text class="col-title" x="0" y="24">React 19 &amp; TypeScript</text>
+    <line x1="0" y1="36" x2="270" y2="36" stroke="#111110" stroke-width="1.5"/>
+
+    <!-- Client Root Shell -->
+    <rect class="card-box" x="0" y="52" width="270" height="585"/>
+
+    <!-- Stack Badge -->
+    <g transform="translate(16, 70)">
+      <text class="card-label" x="0" y="0">TOOLING &amp; RUNTIME</text>
+      <text class="card-name" x="0" y="18">Vite 8 · React Router 6</text>
+      <text class="card-detail" x="0" y="34">TanStack Query 5 · TailwindCSS 3.4</text>
+    </g>
+    <line x1="16" y1="120" x2="254" y2="120" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- UI Module 1: Search & Inventory -->
+    <g transform="translate(16, 134)">
+      <text class="card-label" x="0" y="0">MODULE 01 · ROUTE DISCOVERY</text>
+      <text class="card-name" x="0" y="17">SearchPage &amp; Train Filters</text>
+      <text class="card-detail" x="0" y="33">Origin/Dest station lookup, quota types (General/Tatkal), dynamic fare quotes in paise.</text>
+    </g>
+    <line x1="16" y1="198" x2="254" y2="198" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- UI Module 2: Booking Lifecycle -->
+    <g transform="translate(16, 212)">
+      <text class="card-label" x="0" y="0">MODULE 02 · BOOKING &amp; HOLD</text>
+      <text class="card-name" x="0" y="17">BookingModal &amp; PaymentModal</text>
+      <text class="card-detail" x="0" y="33">Passenger manifest (1-6), berth preference, UPI/Card gateway simulation with 10m TTL.</text>
+    </g>
+    <line x1="16" y1="276" x2="254" y2="276" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- UI Module 3: PNR Console -->
+    <g transform="translate(16, 290)">
+      <text class="card-label" x="0" y="0">MODULE 03 · RESERVATION SLIP</text>
+      <text class="card-name" x="0" y="17">PNRStatusPage &amp; My Trips</text>
+      <text class="card-detail" x="0" y="33">10-digit PNR lookup, confirmed coach/seat #, print pass, tiered departure refund engine.</text>
+    </g>
+    <line x1="16" y1="354" x2="254" y2="354" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- UI Module 4: Live Telemetry -->
+    <g transform="translate(16, 368)">
+      <text class="card-label" x="0" y="0">MODULE 04 · RADAR TELEMETRY</text>
+      <text class="card-name" x="0" y="17">LiveTrackingPage &amp; RouteMap</text>
+      <text class="card-detail" x="0" y="33">Leaflet GeoJSON route vector, live station clearance board, delay &amp; platform tracking.</text>
+    </g>
+    <line x1="16" y1="432" x2="254" y2="432" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- UI Module 5: Admin & AI Assistant -->
+    <g transform="translate(16, 446)">
+      <text class="card-label" x="0" y="0">MODULE 05 · OPERATIONS &amp; AI</text>
+      <text class="card-name" x="0" y="17">AdminDashboard &amp; AiAssistant</text>
+      <text class="card-detail" x="0" y="33">Master Train/Station CRUD, rake stats, conversational AI assistant panel with tool execution.</text>
+    </g>
+    <line x1="16" y1="510" x2="254" y2="510" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- Client Security State -->
+    <g transform="translate(16, 524)">
+      <text class="card-label" x="0" y="0">SESSION STATE &amp; CONTEXT</text>
+      <text class="card-detail" x="0" y="17">• AuthContext (User &amp; Role state)<br/>• ThemeContext (Light &amp; Dark tokens)<br/>• Axios Client (Credentials &amp; Anti-CSRF)</text>
+    </g>
+  </g>
+
+  <!-- Connectors: Client -> Application -->
+  <g>
+    <!-- Arrow 1: Main REST Flow -->
+    <path class="flow-arrow" d="M 330 250 L 390 250" marker-end="url(#arrow-dark)"/>
+    <rect class="protocol-pill" x="336" y="238" width="48" height="16"/>
+    <text class="protocol-text" x="360" y="249" text-anchor="middle">REST</text>
+
+    <!-- Arrow 2: Auth Session Flow -->
+    <path class="flow-arrow-dashed" d="M 330 460 L 390 460" marker-end="url(#arrow-muted)"/>
+    <rect class="protocol-pill" x="334" y="448" width="52" height="16"/>
+    <text class="protocol-text" x="360" y="459" text-anchor="middle">COOKIE</text>
+
+    <!-- Arrow 3: Live Radar Flow -->
+    <path class="flow-arrow" d="M 330 600 L 390 600" marker-end="url(#arrow-dark)"/>
+    <rect class="protocol-pill" x="336" y="588" width="48" height="16"/>
+    <text class="protocol-text" x="360" y="599" text-anchor="middle">POLL</text>
+  </g>
+
+  <!-- ====================================================================== -->
+  <!-- COLUMN 02: APPLICATION TIER                                            -->
+  <!-- ====================================================================== -->
+  <g transform="translate(390, 155)">
+    <!-- Column Topline -->
+    <text class="col-header" x="0" y="0">02 / APPLICATION LAYER</text>
+    <text class="col-title" x="0" y="24">Express 4.21 &amp; TypeScript</text>
+    <line x1="0" y1="36" x2="310" y2="36" stroke="#111110" stroke-width="1.5"/>
+
+    <!-- App Root Box -->
+    <rect class="card-box" x="0" y="52" width="310" height="585"/>
+
+    <!-- Security & Middleware Section -->
+    <g transform="translate(16, 70)">
+      <text class="card-label" x="0" y="0">SECURITY &amp; PIPELINE GUARDS</text>
+      <text class="card-name" x="0" y="17">Helmet · CORS · Argon2id</text>
+      <text class="card-detail" x="0" y="32">Session regeneration on login, Zod body validation middleware, global error interceptor, Swagger /api/docs.</text>
+    </g>
+    <line x1="16" y1="126" x2="294" y2="126" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- Core Service 1: Inventory & Overlap -->
+    <g transform="translate(16, 140)">
+      <text class="card-label" x="0" y="0">CORE ENGINE 01 · INVENTORY</text>
+      <text class="card-name" x="0" y="17">inventoryService.ts</text>
+      <text class="card-detail" x="0" y="32">Segment overlap intersection check: <tspan class="code-font">bSeq &lt; toRS &amp;&amp; aSeq &gt; fromRS</tspan>. Allows non-overlapping passengers to share seats on same train run.</text>
+    </g>
+    <line x1="16" y1="214" x2="294" y2="214" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- Core Service 2: Booking & Concurrency -->
+    <g transform="translate(16, 228)">
+      <text class="card-label" x="0" y="0">CORE ENGINE 02 · BOOKING &amp; TTL</text>
+      <text class="card-name" x="0" y="17">bookingService &amp; holdCleanup</text>
+      <text class="card-detail" x="0" y="32">2-Phase seat hold (<tspan class="code-font">LOCKED</tspan> with 10m TTL), auto-recovery cron, unique 10-digit PNR generation, cancellation refund tiered fee calculation.</text>
+    </g>
+    <line x1="16" y1="302" x2="294" y2="302" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- Core Service 3: Server-side Fares -->
+    <g transform="translate(16, 316)">
+      <text class="card-label" x="0" y="0">CORE ENGINE 03 · PRICING &amp; AUDIT</text>
+      <text class="card-name" x="0" y="17">fareService.ts</text>
+      <text class="card-detail" x="0" y="32">Authoritative server calculation in integer paise. Distance multipliers, quota surcharges (Tatkal), 5% GST, zero reliance on client prices.</text>
+    </g>
+    <line x1="16" y1="388" x2="294" y2="388" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- Core Service 4: AI Tool Registry -->
+    <g transform="translate(16, 402)">
+      <text class="card-label" x="0" y="0">CORE ENGINE 04 · AI INTEGRATION</text>
+      <text class="card-name" x="0" y="17">ToolRegistry.ts (AiService)</text>
+      <text class="card-detail" x="0" y="32">5 strictly bounded tools: <tspan class="code-font">search_trains</tspan>, <tspan class="code-font">get_fare</tspan>, <tspan class="code-font">get_booking_status</tspan>, <tspan class="code-font">get_my_bookings</tspan>, <tspan class="code-font">get_train_running_status</tspan>. Zero direct DB mutation.</text>
+    </g>
+    <line x1="16" y1="480" x2="294" y2="480" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- Core Service 5: Telemetry Orchestration -->
+    <g transform="translate(16, 494)">
+      <text class="card-label" x="0" y="0">CORE ENGINE 05 · TELEMETRY ORCHESTRATION</text>
+      <text class="card-name" x="0" y="17">trackingService.ts &amp; Cache</text>
+      <text class="card-detail" x="0" y="32">In-memory TTL cache (60s), multi-tier provider cascade, rate-limiting budgets (10 req/min), normalized <tspan class="code-font">NormalizedRunningStatus</tspan>.</text>
+    </g>
+  </g>
+
+  <!-- Connectors: Application -> Data -->
+  <g>
+    <!-- Arrow to Prisma -->
+    <path class="flow-arrow" d="M 700 320 L 755 320" marker-end="url(#arrow-dark)"/>
+    <rect class="protocol-pill" x="708" y="308" width="42" height="16"/>
+    <text class="protocol-text" x="729" y="319" text-anchor="middle">ORM</text>
+
+    <!-- Arrow to External Services -->
+    <path class="flow-arrow" d="M 700 520 L 1080 520" marker-end="url(#arrow-dark)"/>
+    <rect class="protocol-pill" x="870" y="508" width="56" height="16"/>
+    <text class="protocol-text" x="898" y="519" text-anchor="middle">INTEGRATE</text>
+  </g>
+
+  <!-- ====================================================================== -->
+  <!-- COLUMN 03: PERSISTENCE & DATA TIER                                     -->
+  <!-- ====================================================================== -->
+  <g transform="translate(755, 155)">
+    <!-- Column Topline -->
+    <text class="col-header" x="0" y="0">03 / PERSISTENCE TIER</text>
+    <text class="col-title" x="0" y="24">Prisma ORM &amp; SQLite</text>
+    <line x1="0" y1="36" x2="295" y2="36" stroke="#111110" stroke-width="1.5"/>
+
+    <!-- Data Root Box -->
+    <rect class="card-box" x="0" y="52" width="295" height="425"/>
+
+    <!-- Database Engine Banner -->
+    <g transform="translate(16, 70)">
+      <text class="card-label" x="0" y="0">DATABASE ENGINE &amp; TRANSACTIONS</text>
+      <text class="card-name" x="0" y="17">SQLite (<tspan class="code-font">prisma/dev.db</tspan>)</text>
+      <text class="card-detail" x="0" y="32">Enforced <tspan class="code-font">Serializable</tspan> isolation level inside <tspan class="code-font">prisma.$transaction</tspan> ensuring zero dirty reads or phantom seat collisions.</text>
+    </g>
+    <line x1="16" y1="126" x2="279" y2="126" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- Relational Models: Master -->
+    <g transform="translate(16, 140)">
+      <text class="card-label" x="0" y="0">MASTER OPERATIONAL MODELS</text>
+      <text class="card-name" x="0" y="17">Stations · Trains · Routes</text>
+      <text class="card-detail" x="0" y="32">• <tspan class="code-font">RouteStation</tspan> (Sequence offsets, halt min, km)<br/>• <tspan class="code-font">TrainSchedule</tspan> (7-bit running days bitmask)<br/>• <tspan class="code-font">TrainRun</tspan> (Calendar journey instances)</text>
+    </g>
+    <line x1="16" y1="214" x2="279" y2="214" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- Relational Models: Inventory -->
+    <g transform="translate(16, 228)">
+      <text class="card-label" x="0" y="0">INVENTORY &amp; ALLOCATION MODELS</text>
+      <text class="card-name" x="0" y="17">Coaches · Seats · Allocations</text>
+      <text class="card-detail" x="0" y="32">• Express classes: 1A, 2A, 3A, SL, CC, EC<br/>• <tspan class="code-font">SeatAllocation</tspan>: boardingSeq, alightingSeq<br/>• Status: <tspan class="code-font">LOCKED | CONFIRMED | RELEASED</tspan></text>
+    </g>
+    <line x1="16" y1="302" x2="279" y2="302" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1"/>
+
+    <!-- Relational Models: Bookings & Ledger -->
+    <g transform="translate(16, 316)">
+      <text class="card-label" x="0" y="0">COMMERCE &amp; AUDIT LEDGER</text>
+      <text class="card-name" x="0" y="17">Bookings · Payments · Refunds</text>
+      <text class="card-detail" x="0" y="32">• <tspan class="code-font">Booking</tspan> (Unique 10-digit PNR, PENDING/CONFIRMED)<br/>• <tspan class="code-font">PaymentTransaction</tspan> (idempotencyKey)<br/>• <tspan class="code-font">Cancellation</tspan> (deductionPercent, refundAmount)</text>
+    </g>
+  </g>
+
+  <!-- ====================================================================== -->
+  <!-- COLUMN 04: EXTERNAL INTEGRATIONS                                       -->
+  <!-- ====================================================================== -->
+  <g transform="translate(1080, 155)">
+    <!-- Column Topline -->
+    <text class="col-header" x="0" y="0">04 / EXTERNAL SERVICES</text>
+    <text class="col-title" x="0" y="24">AI &amp; Live Telemetry</text>
+    <line x1="0" y1="36" x2="260" y2="36" stroke="#111110" stroke-width="1.5"/>
+
+    <!-- AI Service Box -->
+    <rect class="card-box" x="0" y="52" width="260" height="215"/>
+    <g transform="translate(16, 70)">
+      <div style="display:flex;">
+        <text class="card-label" x="0" y="0">COGNITION ENGINE</text>
+      </div>
+      <text class="card-name" x="0" y="17">Google Gemini API</text>
+      <text class="card-detail" x="0" y="32">Gemini Flash LLM via <tspan class="code-font">@google/genai</tspan>. Generates tool calling intents evaluated against server ToolRegistry. System prompt prohibits hallucinating fares or direct database edits.</text>
+
+      <!-- Security Status Badge -->
+      <g transform="translate(0, 105)">
+        <rect class="status-pill" x="0" y="0" width="145" height="20"/>
+        <circle class="pulse-dot" cx="10" cy="10" r="3"/>
+        <text class="status-text" x="18" y="13">Controlled Tool Barrier</text>
+      </g>
+    </g>
+
+    <!-- Telemetry Failover Cascade Box -->
+    <rect class="card-box" x="0" y="285" width="260" height="352"/>
+    <g transform="translate(16, 303)">
+      <text class="card-label" x="0" y="0">RADAR TELEMETRY FAILOVER</text>
+      <text class="card-name" x="0" y="17">Multi-Tier Failover Engine</text>
+      <text class="card-detail" x="0" y="32">4-Stage resilient progression chain:</text>
+
+      <!-- Stage 1 -->
+      <g transform="translate(0, 48)">
+        <rect class="card-box-accent" x="0" y="0" width="228" height="48"/>
+        <text class="card-name" x="10" y="17" font-size="11.5px">Tier 1: RailRadar API</text>
+        <text class="card-detail" x="10" y="32" font-size="9.5px">Primary live telemetry &amp; GeoJSON route</text>
+      </g>
+
+      <!-- Down Arrow -->
+      <path class="flow-arrow-dashed" d="M 114 100 L 114 110" marker-end="url(#arrow-muted)"/>
+
+      <!-- Stage 2 -->
+      <g transform="translate(0, 114)">
+        <rect class="card-box" x="0" y="0" width="228" height="48"/>
+        <text class="card-name" x="10" y="17" font-size="11.5px">Tier 2: ChukChuk Microservice</text>
+        <text class="card-detail" x="10" y="32" font-size="9.5px">Python/FastAPI official NTES scraper</text>
+      </g>
+
+      <!-- Down Arrow -->
+      <path class="flow-arrow-dashed" d="M 114 166 L 114 176" marker-end="url(#arrow-muted)"/>
+
+      <!-- Stage 3 -->
+      <g transform="translate(0, 180)">
+        <rect class="card-box" x="0" y="0" width="228" height="44"/>
+        <text class="card-name" x="10" y="16" font-size="11px">Tier 3: RapidAPI Gateway</text>
+        <text class="card-detail" x="10" y="30" font-size="9px">Commercial backup status endpoint</text>
+      </g>
+
+      <!-- Down Arrow -->
+      <path class="flow-arrow-dashed" d="M 114 228 L 114 238" marker-end="url(#arrow-muted)"/>
+
+      <!-- Stage 4 -->
+      <g transform="translate(0, 242)">
+        <rect class="card-box" x="0" y="0" width="228" height="44"/>
+        <text class="card-name" x="10" y="16" font-size="11px">Tier 4: Timetable Fallback</text>
+        <text class="card-detail" x="10" y="30" font-size="9px">Deterministic schedule math on local DB</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ====================================================================== -->
+  <!-- BOTTOM ARCHITECTURAL INVARIANTS & METRICS STRIP                        -->
+  <!-- ====================================================================== -->
+  <g transform="translate(60, 850)">
+    <!-- Strip 1 -->
+    <g transform="translate(0, 0)">
+      <text class="card-label" x="0" y="0">CONCURRENCY &amp; INVENTORY</text>
+      <text class="kpi-title" x="0" y="20">Segment Overlap Reuse</text>
+      <text class="kpi-desc" x="0" y="36">Independent non-colliding segments share the same berth</text>
+    </g>
+
+    <!-- Divider -->
+    <line x1="300" y1="0" x2="300" y2="40" stroke="rgba(17, 17, 16, 0.12)" stroke-width="1"/>
+
+    <!-- Strip 2 -->
+    <g transform="translate(330, 0)">
+      <text class="card-label" x="0" y="0">TRANSACTION GUARANTEE</text>
+      <text class="kpi-title" x="0" y="20">Serializable Isolation</text>
+      <text class="kpi-desc" x="0" y="36">Prisma.$transaction locks prevent double-booking collisions</text>
+    </g>
+
+    <!-- Divider -->
+    <line x1="640" y1="0" x2="640" y2="40" stroke="rgba(17, 17, 16, 0.12)" stroke-width="1"/>
+
+    <!-- Strip 3 -->
+    <g transform="translate(670, 0)">
+      <text class="card-label" x="0" y="0">PAYMENT &amp; CANCELLATION</text>
+      <text class="kpi-title" x="0" y="20">Strict Idempotency</text>
+      <text class="kpi-desc" x="0" y="36">idempotencyKey &amp; state guards prevent duplicate charges</text>
+    </g>
+
+    <!-- Divider -->
+    <line x1="970" y1="0" x2="970" y2="40" stroke="rgba(17, 17, 16, 0.12)" stroke-width="1"/>
+
+    <!-- Strip 4 -->
+    <g transform="translate(1000, 0)">
+      <text class="card-label" x="0" y="0">AI ARCHITECTURE BOUNDARY</text>
+      <text class="kpi-title" x="0" y="20">Controlled Tool Registry</text>
+      <text class="kpi-desc" x="0" y="36">LLM limited to 5 read-only queries with zero direct DB control</text>
+    </g>
+  </g>
+</svg>

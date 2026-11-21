@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f2f2ee" />
+    <meta name="description" content="Santanu Dey — Computer Science & Engineering student building software, AI systems, and practical developer tools." />
+    <meta property="og:title" content="Santanu Dey — Software Development & AI/ML" />
+    <meta property="og:description" content="Computer Science & Engineering student building full-stack applications, AI systems, and developer-focused software tools." />
+    <title>Santanu Dey — Software Development & AI/ML</title>
+  </head>
+  <body>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand-pill pill" href="#top" aria-label="Santanu Dey home"> Santanu Dey</a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a class="pill nav-pill" href="#projects">Projects</a>
+        <a class="pill nav-pill" href="#about">About</a>
+        <a class="pill nav-pill" href="#skills">Skills</a>
+        <a class="pill nav-pill" href="#education">Education</a>
+        <a class="pill nav-pill" href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a class="pill resume-pill" href="/resume.pdf" download="Santanu_Dey_Resume.pdf" target="_blank" rel="noreferrer">Resume ↓</a>
+        <a class="pill social-pill" href="https://github.com/mrsantanu21" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a class="pill availability-pill" href="#contact"><span class="status-dot"></span>Open to work</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell" aria-labelledby="hero-title">
+        <div class="hero-topline">
+          <a class="email-link mono-link" href="mailto:mrsantanudey459@gmail.com">mrsantanudey459@gmail.com</a>
+          <span class="hero-index">01 / 06</span>
+        </div>
+        <div class="hero-title-wrap">
+          <h1 id="hero-title" class="display-title hero-title">
+            <span class="reveal-line">COMPUTER SCIENCE</span>
+            <span class="reveal-line">&amp; ENGINEERING</span>
+            <span class="reveal-line">STUDENT</span>
+          </h1>
+          <p class="hero-aside">SOFTWARE DEVELOPMENT,<br />AI/ML, AND BUILDING<br />PRACTICAL SYSTEMS</p>
+        </div>
+        <div class="hero-bottomline">
+          <p class="scroll-note">SCROLL TO EXPLORE <span>↓</span></p>
+          <p class="location-note">WEST BENGAL, INDIA</p>
+        </div>
+      </section>
+
+      <section id="about" class="intro section-shell section-reveal" aria-labelledby="about-heading">
+        <div class="section-marker">02 <span>ABOUT</span></div>
+        <div class="intro-grid">
+          <div class="intro-copy">
+            <h2 id="about-heading" class="statement">Santanu Dey is a <em>Computer Science &amp; Engineering student</em> building full-stack applications, AI-driven systems, and developer-focused software tools.</h2>
+            <p class="body-copy">Interested in software engineering, artificial intelligence, backend systems, and practical problem solving — with a growing focus on AI-agent workflows and building things that make complex work easier to understand.</p>
+            <div class="about-actions">
+              <div id="resume-button-react"></div>
+              <a class="pill resume-btn" href="/resume.pdf" download="Santanu_Dey_Resume.pdf" target="_blank" rel="noreferrer">
+                <span>Download Resume</span>
+                <span class="btn-arrow">↓</span>
+              </a>
+            </div>
+          </div>
+          <aside class="expertise-block">
+            <p class="eyebrow">EXPERTISE</p>
+            <ul class="expertise-list">
+              <li>Full-stack development</li>
+              <li>Artificial intelligence</li>
+              <li>AI agents &amp; LLMs</li>
+              <li>Backend systems</li>
+              <li>React &amp; TypeScript</li>
+              <li>Databases &amp; APIs</li>
+              <li>Software analysis</li>
+              <li>Developer tools</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section id="projects" class="projects section-shell section-reveal" aria-labelledby="projects-heading">
+        <div class="section-heading-row">
+          <div class="section-marker">03 <span>SELECTED WORK</span></div>
+          <h2 id="projects-heading" class="display-title section-title">SELECTED<br />WORK</h2>
+        </div>
+        <div class="project-list">
+          <a class="project-row" href="#contact" data-project="rea" aria-label="Contact Santanu about Reverse Engineering Anything">
+            <span class="project-number">01</span>
+            <span class="project-main">
+              <strong class="project-name">Reverse Engineering Anything</strong>
+              <span class="project-description">An AI-assisted reverse engineering and software analysis workbench.</span>
+            </span>
+            <span class="project-meta"><span>AI · SOFTWARE ANALYSIS</span><b>VIEW ↗</b></span>
+            <span class="project-visual visual-rea" aria-hidden="true"><span class="visual-grid"></span><span class="visual-node node-a"></span><span class="visual-node node-b"></span><span class="visual-node node-c"></span><span class="visual-line line-a"></span><span class="visual-line line-b"></span><span class="visual-caption">EVIDENCE / 001</span></span>
+          </a>
+          <a class="project-row" href="#contact" data-project="railflow" aria-label="Contact Santanu about RailFlow">
+            <span class="project-number">02</span>
+            <span class="project-main">
+              <strong class="project-name">RailFlow</strong>
+              <span class="project-description">A full-stack railway explorer and reservation platform.</span>
+            </span>
+            <span class="project-meta"><span>FULL-STACK · RAILWAY TECH</span><b>VIEW ↗</b></span>
+            <span class="project-visual visual-rail" aria-hidden="true"><span class="rail-track track-one"></span><span class="rail-track track-two"></span><span class="rail-train"></span><span class="rail-station station-one">COB</span><span class="rail-station station-two">HWH</span><span class="visual-caption">ROUTE / 002</span></span>
+          </a>
+          <a class="project-row" href="#contact" data-project="santa" aria-label="Contact Santanu about SANTA AI personal assistant">
+            <span class="project-number">03</span>
+            <span class="project-main">
+              <strong class="project-name">SANTA</strong>
+              <span class="project-description">A voice and message-based AI personal assistant.</span>
+            </span>
+            <span class="project-meta"><span>AI · VOICE INTERACTION</span><b>VIEW ↗</b></span>
+            <span class="project-visual visual-santa" aria-hidden="true"><span class="orb orb-one"></span><span class="orb orb-two"></span><span class="orb orb-three"></span><span class="sound-wave wave-one"></span><span class="sound-wave wave-two"></span><span class="sound-wave wave-three"></span><span class="visual-caption">LISTEN / 003</span></span>
+          </a>
+        </div>
+      </section>
+
+      <section id="skills" class="skills section-shell section-reveal" aria-labelledby="skills-heading">
+        <div class="section-heading-row skills-heading-row">
+          <div class="section-marker">04 <span>CAPABILITIES</span></div>
+          <h2 id="skills-heading" class="display-title section-title">THINGS I<br />WORK WITH</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-group"><p class="eyebrow">LANGUAGES</p><p>Python, Java, JavaScript, TypeScript, C/C++</p></div>
+          <div class="skill-group"><p class="eyebrow">FRONTEND</p><p>React, HTML, CSS, Tailwind CSS, Vite</p></div>
+          <div class="skill-group"><p class="eyebrow">BACKEND</p><p>Node.js, Express.js, REST APIs</p></div>
+          <div class="skill-group"><p class="eyebrow">DATABASES</p><p>SQLite, SQL, Prisma ORM</p></div>
+          <div class="skill-group"><p class="eyebrow">AI / ML</p><p>Artificial Intelligence, AI Agents, Machine Learning Fundamentals, LLM Integration</p></div>
+          <div class="skill-group"><p class="eyebrow">TOOLS</p><p>Git, GitHub, VS Code, Antigravity, Postman</p></div>
+          <div class="skill-group skill-group-wide"><p class="eyebrow">CORE</p><p>Data Structures &amp; Algorithms, Object-Oriented Programming, Operating Systems, DBMS, Software Engineering</p></div>
+        </div>
+      </section>
+
+      <section id="education" class="education section-shell section-reveal" aria-labelledby="education-heading">
+        <div class="section-heading-row">
+          <div class="section-marker">05 <span>BACKGROUND</span></div>
+          <h2 id="education-heading" class="display-title section-title">EDUCATION<br />&amp; PROOF</h2>
+        </div>
+        <div class="education-layout">
+          <div class="timeline">
+            <div class="timeline-row">
+              <span class="timeline-date">2024 — 2028</span>
+              <div><h3>Cooch Behar Government Engineering College</h3><p>B.Tech in Computer Science &amp; Engineering</p><small>WEST BENGAL, INDIA</small></div>
+            </div>
+            <div class="timeline-row">
+              <span class="timeline-date">PRIOR</span>
+              <div><h3>Diploma in Survey Engineering</h3><p>Completed before B.Tech lateral entry</p></div>
+            </div>
+          </div>
+          <div class="certifications">
+            <p class="eyebrow">CERTIFICATIONS &amp; ACHIEVEMENTS</p>
+            <ul class="cert-list">
+              <li><span>Oracle Certified Foundations Associate – Agentic AI</span><small>ORACLE · AUG 2026</small></li>
+              <li><span>AI Fluency for Students</span><small>ANTHROPIC · MAR 2026</small></li>
+              <li><span>Front-End Software Engineering Job Simulation</span><small>SKYSCANNER / FORAGE · JUN 2026</small></li>
+              <li><span>Quantitative Research Job Simulation</span><small>J.P. MORGAN / FORAGE · MAY 2026</small></li>
+              <li><span>Python for Beginners</span><small>SIMPLILEARN · MAY 2026</small></li>
+            </ul>
+          </div>
+        </div>
+        <div class="coursework"><p class="eyebrow">RELEVANT COURSEWORK</p><p>Data Structures &amp; Algorithms · Database Management Systems · Operating Systems · Object-Oriented Programming · Software Engineering · Compiler Design · Theory of Computation · Discrete Mathematics</p></div>
+      </section>
+
+      <section id="contact" class="contact section-shell section-reveal" aria-labelledby="contact-heading">
+        <div class="section-marker">06 <span>CONTACT</span></div>
+        <div class="contact-wrap">
+          <h2 id="contact-heading" class="display-title contact-title">LET’S BUILD<br /><span>SOMETHING USEFUL</span></h2>
+          <p class="contact-copy">Interested in software engineering, AI/ML, backend systems, developer tools, and opportunities to work on meaningful technical products.</p>
+          <button class="email-cta" type="button" data-copy-email="mrsantanudey459@gmail.com"><span>mrsantanudey459@gmail.com</span><b class="copy-label">COPY EMAIL ↗</b></button>
+          <div class="contact-links">
+            <a href="/resume.pdf" download="Santanu_Dey_Resume.pdf" target="_blank" rel="noreferrer">Download Resume ↓</a>
+            <a href="tel:+919144246356">+91 91442 46356</a>
+            <a href="https://linkedin.com/in/santanudey04/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a href="https://github.com/mrsantanu21" target="_blank" rel="noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <div><span class="footer-mark">S</span><span>© 2026 Santanu Dey</span></div>
+      <div><span>BUILT WITH CURIOSITY</span><a href="#top">BACK TO TOP ↑</a></div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,264 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 980" width="100%" height="100%" style="background-color: #f2f2ee; font-family: 'Plus Jakarta Sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <style>
+      .editorial-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; fill: #888884; text-transform: uppercase; }
+      .header-title { font-size: 26px; font-weight: 700; letter-spacing: -0.035em; fill: #111110; }
+      .header-desc { font-size: 13.5px; fill: #52524e; font-weight: 400; line-height: 1.5; }
+      .stage-card { fill: #ffffff; stroke: rgba(17, 17, 16, 0.12); stroke-width: 1px; rx: 8px; }
+      .stage-card-accent { fill: #ffffff; stroke: #111110; stroke-width: 1.5px; rx: 8px; }
+      .stage-num { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; fill: #888884; text-transform: uppercase; }
+      .stage-title { font-size: 14px; font-weight: 700; fill: #111110; letter-spacing: -0.015em; }
+      .stage-desc { font-size: 11px; fill: #52524e; line-height: 1.45; }
+      .code-tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 9.5px; fill: #111110; background: rgba(17, 17, 16, 0.05); }
+      .flow-line { stroke: #111110; stroke-width: 1.5px; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .flow-dashed { stroke: rgba(17, 17, 16, 0.3); stroke-width: 1.5px; stroke-dasharray: 4,4; fill: none; }
+      .pill-badge { fill: rgba(17, 17, 16, 0.05); stroke: rgba(17, 17, 16, 0.1); stroke-width: 1px; rx: 4px; }
+      .pill-text { font-size: 9px; font-weight: 600; fill: #52524e; text-transform: uppercase; letter-spacing: 0.06em; }
+      .guard-box { fill: #fafaf8; stroke: rgba(17, 17, 16, 0.16); stroke-width: 1px; rx: 6px; }
+      .guard-title { font-size: 11px; font-weight: 700; fill: #111110; letter-spacing: -0.01em; }
+      .guard-desc { font-size: 10px; fill: #52524e; line-height: 1.4; }
+      .status-dot { fill: #10b981; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#111110"/>
+    </marker>
+    <marker id="arrow-subtle" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#888884"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas Subtle Grid Lines -->
+  <line x1="60" y1="125" x2="1340" y2="125" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1" />
+  <line x1="60" y1="880" x2="1340" y2="880" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1" />
+
+  <!-- ====================================================================== -->
+  <!-- TOP EDITORIAL HEADER                                                   -->
+  <!-- ====================================================================== -->
+  <g transform="translate(60, 48)">
+    <text class="editorial-badge" x="0" y="0">[ BOOKING PIPELINE SPECIFICATION · VOL. 02 ]</text>
+    <text class="header-title" x="0" y="32">RAILFLOW · ATOMIC BOOKING &amp; CONCURRENCY LIFECYCLE</text>
+    <text class="header-desc" x="0" y="56">Deterministic request trajectory: from client search and segment range checking to serializable Prisma isolation, 10-minute hold TTLs, and idempotent settlement.</text>
+    
+    <!-- Meta badges on top right -->
+    <g transform="translate(980, -2)">
+      <rect class="pill-badge" x="0" y="0" width="135" height="24" rx="4"/>
+      <text class="pill-text" x="67" y="16" text-anchor="middle">Prisma $transaction</text>
+      
+      <rect class="pill-badge" x="145" y="0" width="155" height="24" rx="4"/>
+      <text class="pill-text" x="222" y="16" text-anchor="middle">Interval Conflict Guard</text>
+    </g>
+  </g>
+
+  <!-- ====================================================================== -->
+  <!-- ROW 1: INGESTION, VALIDATION & SERVER-SIDE FARES                       -->
+  <!-- ====================================================================== -->
+
+  <!-- STEP 01: Client Trigger -->
+  <g transform="translate(60, 155)">
+    <rect class="stage-card" x="0" y="0" width="280" height="205"/>
+    <g transform="translate(16, 20)">
+      <text class="stage-num" x="0" y="0">PHASE 01 · CLIENT INTENT</text>
+      <text class="stage-title" x="0" y="20">Passenger Journey Request</text>
+      <text class="stage-desc" x="0" y="38">Passenger selects origin (<tspan class="code-tag">NDLS</tspan>), destination (<tspan class="code-tag">BSB</tspan>), date, quota (<tspan class="code-tag">GENERAL</tspan>), and class (<tspan class="code-tag">CHAIR_CAR</tspan>).</text>
+      
+      <g transform="translate(0, 90)">
+        <rect class="guard-box" x="0" y="0" width="248" height="58"/>
+        <text class="guard-title" x="10" y="18">TanStack Query Payload</text>
+        <text class="guard-desc" x="10" y="34">• 1-6 Passenger manifest (Name, Age, Gender)<br/>• Berth preferences (Window, Aisle, Lower)</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path class="flow-line" d="M 340 255 L 390 255" marker-end="url(#arrow)"/>
+  <rect class="pill-badge" x="345" y="244" width="40" height="16"/>
+  <text class="pill-text" x="365" y="255" text-anchor="middle">POST</text>
+
+  <!-- STEP 02: Route Interception & Zod Validation -->
+  <g transform="translate(390, 155)">
+    <rect class="stage-card" x="0" y="0" width="280" height="205"/>
+    <g transform="translate(16, 20)">
+      <text class="stage-num" x="0" y="0">PHASE 02 · ROUTE GUARDS</text>
+      <text class="stage-title" x="0" y="20">Authentication &amp; Zod Schema</text>
+      <text class="stage-desc" x="0" y="38">Intercepted by <tspan class="code-tag">POST /api/bookings</tspan>. Express verifies active session and validates payload against schema.</text>
+
+      <g transform="translate(0, 90)">
+        <rect class="guard-box" x="0" y="0" width="248" height="58"/>
+        <text class="guard-title" x="10" y="18">Pipeline Defenses</text>
+        <text class="guard-desc" x="10" y="34">• <tspan class="code-tag">requireAuth</tspan>: 401 if unauthenticated<br/>• <tspan class="code-tag">validate(createBookingSchema)</tspan>: Age 1-120</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path class="flow-line" d="M 670 255 L 720 255" marker-end="url(#arrow)"/>
+
+  <!-- STEP 03: Authoritative Fare Calculation -->
+  <g transform="translate(720, 155)">
+    <rect class="stage-card" x="0" y="0" width="280" height="205"/>
+    <g transform="translate(16, 20)">
+      <text class="stage-num" x="0" y="0">PHASE 03 · PRICE INTEGRITY</text>
+      <text class="stage-title" x="0" y="20">Authoritative Server Fare</text>
+      <text class="stage-desc" x="0" y="38"><tspan class="code-tag">calculateFare()</tspan> queries <tspan class="code-tag">FareRule</tspan> in integer paise. Client prices are strictly ignored to prevent tampering.</text>
+
+      <g transform="translate(0, 90)">
+        <rect class="guard-box" x="0" y="0" width="248" height="58"/>
+        <text class="guard-title" x="10" y="18">Deterministic Breakdown</text>
+        <text class="guard-desc" x="10" y="34">• Base rate × KM distance factor<br/>• Quota surcharge + 5% GST calculated in paise</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <path class="flow-line" d="M 1000 255 L 1050 255" marker-end="url(#arrow)"/>
+
+  <!-- STEP 04: Route Sequence Resolution -->
+  <g transform="translate(1050, 155)">
+    <rect class="stage-card" x="0" y="0" width="290" height="205"/>
+    <g transform="translate(16, 20)">
+      <text class="stage-num" x="0" y="0">PHASE 04 · CORRIDOR RESOLUTION</text>
+      <text class="stage-title" x="0" y="20">Route Station Sequences</text>
+      <text class="stage-desc" x="0" y="38">Fetches sequence offsets from <tspan class="code-tag">RouteStation</tspan>. Validates directional order: <tspan class="code-tag">fromRS.seq &lt; toRS.seq</tspan>.</text>
+
+      <g transform="translate(0, 90)">
+        <rect class="guard-box" x="0" y="0" width="258" height="58"/>
+        <text class="guard-title" x="10" y="18">Segment Range Bounding</text>
+        <text class="guard-desc" x="10" y="34">• Origin Sequence: e.g. <tspan class="code-tag">fromRS = 1 (NDLS)</tspan><br/>• Destination Sequence: e.g. <tspan class="code-tag">toRS = 3 (BSB)</tspan></text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Connective Path: Step 4 down to Step 5 -->
+  <path class="flow-line" d="M 1195 360 L 1195 410 L 700 410 L 700 440" marker-end="url(#arrow)"/>
+  <rect class="pill-badge" x="655" y="402" width="90" height="16"/>
+  <text class="pill-text" x="700" y="413" text-anchor="middle">BEGIN $TRANSACTION</text>
+
+  <!-- ====================================================================== -->
+  <!-- ROW 2: PRISMA SERIALIZABLE TRANSACTION & CONCURRENCY (PRIMARY EMPHASIS)-->
+  <!-- ====================================================================== -->
+  <g transform="translate(60, 440)">
+    <!-- Main Big Transaction Shell -->
+    <rect class="stage-card-accent" x="0" y="0" width="1280" height="215"/>
+
+    <!-- Left Header Box -->
+    <g transform="translate(24, 24)">
+      <text class="stage-num" x="0" y="0">PHASE 05 · ATOMIC INVENTORY CONCURRENCY ENGINE</text>
+      <text class="stage-title" x="0" y="22" font-size="18px">Prisma.$transaction with Serializable Isolation</text>
+      <text class="stage-desc" x="0" y="42" font-size="12px">Full transaction serialization ensures zero dirty reads, zero phantom seat double-allocations, and automatic rollback on conflicts.</text>
+    </g>
+
+    <!-- Sub-step A: Row Lock & Defensive Healing -->
+    <g transform="translate(24, 82)">
+      <rect class="guard-box" x="0" y="0" width="290" height="110"/>
+      <g transform="translate(14, 16)">
+        <text class="guard-title" x="0" y="0">5A · Row Lock &amp; Schedule Bitmask</text>
+        <text class="guard-desc" x="0" y="18">• <tspan class="code-tag">tx.trainRun.findUnique</tspan> with coach tree<br/>• Bitmask check: <tspan class="code-tag">scheduleRunsOnDate()</tspan><br/>• Defensive healing: auto-generates coaches via <tspan class="code-tag">ensureTrainRunInventory()</tspan> if unseeded</text>
+      </g>
+    </g>
+
+    <!-- Flow arrow inside transaction A -> B -->
+    <path class="flow-line" d="M 314 137 L 340 137" marker-end="url(#arrow)"/>
+
+    <!-- Sub-step B: Segment-Aware Overlap Algorithm (KEY NOVELTY) -->
+    <g transform="translate(340, 82)">
+      <rect class="stage-card-accent" x="0" y="0" width="370" height="110"/>
+      <g transform="translate(14, 16)">
+        <text class="guard-title" x="0" y="0" fill="#111110">5B · Segment-Aware Overlap Filter (Core Invariant)</text>
+        <text class="guard-desc" x="0" y="18" font-size="10.5px">For each coach seat, checks existing allocations:<br/>
+        <tspan class="code-tag" font-weight="700">alloc.boardingSeq &lt; toRS &amp;&amp; alloc.alightingSeq &gt; fromRS</tspan><br/>
+        • Expired locks (<tspan class="code-tag">lockedUntil &lt; now</tspan>) treated as released<br/>
+        • Non-overlapping segments share the SAME seat on the train!</text>
+      </g>
+    </g>
+
+    <!-- Flow arrow inside transaction B -> C -->
+    <path class="flow-line" d="M 710 137 L 736 137" marker-end="url(#arrow)"/>
+
+    <!-- Sub-step C: 10-Min Hold TTL -->
+    <g transform="translate(736, 82)">
+      <rect class="guard-box" x="0" y="0" width="250" height="110"/>
+      <g transform="translate(14, 16)">
+        <text class="guard-title" x="0" y="0">5C · 10-Minute Lock TTL</text>
+        <text class="guard-desc" x="0" y="18">• Assigns available berths via FIFO<br/>• Sets <tspan class="code-tag">status: LOCKED</tspan><br/>• <tspan class="code-tag">lockedUntil = now + 10 mins</tspan><br/>• Expired holds collected by background cron</text>
+      </g>
+    </g>
+
+    <!-- Flow arrow inside transaction C -> D -->
+    <path class="flow-line" d="M 986 137 L 1012 137" marker-end="url(#arrow)"/>
+
+    <!-- Sub-step D: Atomic Record Creation -->
+    <g transform="translate(1012, 82)">
+      <rect class="guard-box" x="0" y="0" width="244" height="110"/>
+      <g transform="translate(14, 16)">
+        <text class="guard-title" x="0" y="0">5D · Atomic Creation &amp; PNR</text>
+        <text class="guard-desc" x="0" y="18">• Generates 10-digit PNR via <tspan class="code-tag">generatePNR()</tspan><br/>• Creates <tspan class="code-tag">Booking (PENDING)</tspan><br/>• Creates <tspan class="code-tag">BookingPassengers</tspan><br/>• Creates <tspan class="code-tag">SeatAllocations</tspan> in 1 atomic write</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Connective Path: Step 5 down to Step 6 -->
+  <path class="flow-line" d="M 700 655 L 700 705" marker-end="url(#arrow)"/>
+  <rect class="pill-badge" x="655" y="674" width="90" height="16"/>
+  <text class="pill-text" x="700" y="685" text-anchor="middle">SETTLEMENT</text>
+
+  <!-- ====================================================================== -->
+  <!-- ROW 3: PAYMENT GATEWAY SIMULATION & TICKET CONFIRMATION                -->
+  <!-- ====================================================================== -->
+
+  <!-- STEP 06: Payment Simulation & Idempotency -->
+  <g transform="translate(60, 705)">
+    <rect class="stage-card" x="0" y="0" width="480" height="155"/>
+    <g transform="translate(16, 20)">
+      <text class="stage-num" x="0" y="0">PHASE 06 · PAYMENT SETTLEMENT &amp; IDEMPOTENCY</text>
+      <text class="stage-title" x="0" y="20">Two-Phase Payment Confirmation</text>
+      <text class="stage-desc" x="0" y="38">• <tspan class="code-tag">POST /api/payments/initialize</tspan> stores <tspan class="code-tag">PaymentTransaction</tspan> with unique <tspan class="code-tag">idempotencyKey</tspan><br/>
+      • <tspan class="code-tag">POST /api/payments/:id/simulate-result</tspan>: checks <tspan class="code-tag">transaction.status === 'PENDING'</tspan><br/>
+      • Re-simulation returns <tspan class="code-tag">{ alreadyProcessed: true }</tspan> idempotently preventing duplicate charges<br/>
+      • On SUCCESS: Atomically updates booking to <tspan class="code-tag">CONFIRMED</tspan> and seat allocations to <tspan class="code-tag">CONFIRMED</tspan></text>
+    </g>
+  </g>
+
+  <!-- Arrow 6 -> 7 -->
+  <path class="flow-line" d="M 540 782 L 590 782" marker-end="url(#arrow)"/>
+
+  <!-- STEP 07: Boarding Pass & Cancellation Engine -->
+  <g transform="translate(590, 705)">
+    <rect class="stage-card" x="0" y="0" width="480" height="155"/>
+    <g transform="translate(16, 20)">
+      <text class="stage-num" x="0" y="0">PHASE 07 · DIGITAL BOARDING PASS &amp; REFUND ENGINE</text>
+      <text class="stage-title" x="0" y="20">Ticket Issuance &amp; Tiered Cancellation</text>
+      <text class="stage-desc" x="0" y="38">• Digital e-ticket issuance with confirmed Coach <tspan class="code-tag">C1</tspan>, Seat <tspan class="code-tag">#1</tspan>, and scannable barcode<br/>
+      • <tspan class="code-tag">POST /api/bookings/:id/cancel</tspan>: Validates booking status is confirmed and user ownership<br/>
+      • Calculates departure tier deduction: &gt;48h (25%), 12-48h (50%), &lt;12h (75%)<br/>
+      • Inside transaction: status → <tspan class="code-tag">CANCELLED</tspan>, seats → <tspan class="code-tag">RELEASED</tspan>, writes immutable <tspan class="code-tag">Cancellation</tspan> row</text>
+    </g>
+  </g>
+
+  <!-- Arrow 7 -> 8 -->
+  <path class="flow-line" d="M 1070 782 L 1120 782" marker-end="url(#arrow)"/>
+
+  <!-- STEP 08: Client Resolution -->
+  <g transform="translate(1120, 705)">
+    <rect class="stage-card" x="0" y="0" width="220" height="155"/>
+    <g transform="translate(16, 20)">
+      <text class="stage-num" x="0" y="0">LIFECYCLE COMPLETE</text>
+      <text class="stage-title" x="0" y="20">UI State Sync</text>
+      <text class="stage-desc" x="0" y="38">• TanStack Query invalidation<br/>• Live PNR &amp; My Trips sync<br/>• Real-time berth status update<br/>• Audit trail logged to disk</text>
+
+      <g transform="translate(0, 72)">
+        <circle class="status-dot" cx="6" cy="6" r="4"/>
+        <text class="pill-text" x="16" y="9" fill="#059669">Transaction Verified</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ====================================================================== -->
+  <!-- BOTTOM SUMMARY STRIP                                                   -->
+  <!-- ====================================================================== -->
+  <g transform="translate(60, 905)">
+    <text class="card-label" x="0" y="0">KEY LIFECYCLE INVARIANTS</text>
+    <text class="stage-desc" x="0" y="16">
+      1. Interval Collision Safety: Non-overlapping corridor segments reuse berths safely · 2. Atomic Hold TTL: 10-minute hold prevents uncommitted seat hoarding · 3. Double-Spend Guard: Idempotency keys prevent duplicate payment charges · 4. Tiered Cancellation: Immediate seat release with departure time refund ledgering.
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+%% RailFlow AI Architecture & Multi-Tier Telemetry Fallback
+%% Traced directly from aiService.ts, toolRegistry.ts, and trackingService.ts
+flowchart TD
+    classDef safe fill:#fcfcf9,stroke:#111110,stroke-width:1px,color:#111110
+    classDef borderBox fill:#ffffff,stroke:#111110,stroke-dasharray: 2 2,color:#111110
+    classDef warning fill:#fef2f2,stroke:#ef4444,stroke-width:1px,color:#991b1b
+
+    subgraph SYSTEM_A["SYSTEM A: CONTROLLED AI ASSISTANT (GEMINI FLASH)"]
+        direction TB
+        UA["User Query in UI"] --> AS["aiService.ts (Max 3 Multi-turn Rounds)"]
+        AS --> LLM["Google Gemini 2.5 Flash (@google/genai)"]
+        LLM -->|Emits functionCall| TR["Strict Tool Registry (5 Tools Only)"]
+        
+        subgraph TOOLS["Application Guarded Tools"]
+            T1["search_trains"]
+            T2["get_fare"]
+            T3["get_booking_status"]
+            T4["get_my_bookings"]
+            T5["get_train_running_status"]
+        end
+
+        TR --> TOOLS
+        TOOLS -->|Session / User Context Filter| APP["Express App Services & DB Queries"]
+        APP -->|Read-Only Data Payload| TR
+        TR -->|FunctionResponse| LLM
+        LLM -->|Synthesized Grounded Response| AS
+        AS -->|Final Answer| UA
+
+        subgraph PROHIBITED["Security Boundary (Enforced)"]
+            P1["NO Mutations / Inserts"]
+            P2["NO Booking Creations"]
+            P3["NO Payment Triggers"]
+            P4["NO Seat Locking or Cancellations"]
+        end
+    end
+
+    subgraph SYSTEM_B["SYSTEM B: 4-TIER RADAR TELEMETRY FAILOVER"]
+        direction TB
+        TRQ["Client / Map Tracking Request"] --> CACHE["In-Memory Cache (TTL: 60s, Key: trainNo:date)"]
+        CACHE -->|Cache Hit| TRET["Return Cached Live Status & GeoJSON"]
+        
+        CACHE -->|Cache Miss| RL["Rate Limiter (10 req/min per IP)"]
+        RL --> TIER1["Tier 1: RailRadar API (Primary Live Route & GeoJSON)"]
+        
+        TIER1 -->|200 OK & Coordinates| NORM["Normalize to Unified Telemetry Schema"]
+        TIER1 -.->|5xx / Timeout / Rate Limit| TIER2["Tier 2: ChukChuk NTES Scraper (Python FastAPI)"]
+        
+        TIER2 -->|Parsed Station Timings| NORM
+        TIER2 -.->|Down / Captcha Block| TIER3["Tier 3: RapidAPI Gateway (Backup Provider)"]
+        
+        TIER3 -->|Normalized Payload| NORM
+        TIER3 -.->|Failure / Exhausted| TIER4["Tier 4: Timetable Math Fallback Engine"]
+        
+        TIER4 -->|Deterministic Station Delays via SQLite DB| NORM
+        NORM --> WCACHE["Write to 60s Cache"]
+        WCACHE --> TRET
+    end
+
+    class UA,AS,LLM,TR,T1,T2,T3,T4,T5,APP,TRQ,CACHE,TRET,RL,TIER1,TIER2,TIER3,TIER4,NORM,WCACHE safe
+    class P1,P2,P3,P4 warning

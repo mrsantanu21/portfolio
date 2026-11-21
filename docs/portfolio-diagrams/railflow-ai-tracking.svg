@@ -1,0 +1,312 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 940" width="100%" height="100%" style="background-color: #f2f2ee; font-family: 'Plus Jakarta Sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <style>
+      .editorial-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; fill: #888884; text-transform: uppercase; }
+      .header-title { font-size: 26px; font-weight: 700; letter-spacing: -0.035em; fill: #111110; }
+      .header-desc { font-size: 13.5px; fill: #52524e; font-weight: 400; line-height: 1.5; }
+      .section-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; fill: #888884; text-transform: uppercase; }
+      .section-title { font-size: 17px; font-weight: 700; fill: #111110; letter-spacing: -0.02em; }
+      .card-box { fill: #ffffff; stroke: rgba(17, 17, 16, 0.12); stroke-width: 1px; rx: 8px; }
+      .card-box-accent { fill: #ffffff; stroke: #111110; stroke-width: 1.5px; rx: 8px; }
+      .inner-box { fill: #fafaf8; stroke: rgba(17, 17, 16, 0.12); stroke-width: 1px; rx: 6px; }
+      .tool-box { fill: #ffffff; stroke: rgba(17, 17, 16, 0.15); stroke-width: 1px; rx: 6px; }
+      .card-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; fill: #888884; text-transform: uppercase; }
+      .card-name { font-size: 12.5px; font-weight: 700; fill: #111110; letter-spacing: -0.01em; }
+      .card-desc { font-size: 11px; fill: #52524e; line-height: 1.45; }
+      .code-tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 9.5px; fill: #111110; }
+      .flow-line { stroke: #111110; stroke-width: 1.5px; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .flow-dashed { stroke: rgba(17, 17, 16, 0.35); stroke-width: 1.5px; stroke-dasharray: 4,4; fill: none; }
+      .pill-badge { fill: rgba(17, 17, 16, 0.05); stroke: rgba(17, 17, 16, 0.1); stroke-width: 1px; rx: 4px; }
+      .pill-text { font-size: 9px; font-weight: 600; fill: #52524e; text-transform: uppercase; letter-spacing: 0.06em; }
+      .boundary-badge { fill: rgba(239, 68, 68, 0.06); stroke: rgba(239, 68, 68, 0.25); stroke-width: 1px; rx: 4px; }
+      .boundary-text { font-size: 9px; font-weight: 700; fill: #dc2626; text-transform: uppercase; letter-spacing: 0.06em; }
+      .pulse-dot { fill: #10b981; }
+      .status-pill { fill: rgba(16, 185, 129, 0.08); stroke: rgba(16, 185, 129, 0.3); stroke-width: 1px; rx: 9999px; }
+      .status-text { font-size: 9px; font-weight: 600; fill: #059669; }
+    </style>
+    <marker id="arrow-solid" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#111110"/>
+    </marker>
+    <marker id="arrow-dashed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#888884"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas Subtle Grid Lines -->
+  <line x1="60" y1="125" x2="1340" y2="125" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1" />
+  <line x1="700" y1="140" x2="700" y2="840" stroke="rgba(17, 17, 16, 0.12)" stroke-width="1" stroke-dasharray="6,6"/>
+  <line x1="60" y1="850" x2="1340" y2="850" stroke="rgba(17, 17, 16, 0.08)" stroke-width="1" />
+
+  <!-- ====================================================================== -->
+  <!-- TOP EDITORIAL HEADER                                                   -->
+  <!-- ====================================================================== -->
+  <g transform="translate(60, 48)">
+    <text class="editorial-badge" x="0" y="0">[ COGNITION &amp; TELEMETRY ARCHITECTURE · VOL. 03 ]</text>
+    <text class="header-title" x="0" y="32">RAILFLOW · AI REASONING BARRIER &amp; RADAR FAILOVER</text>
+    <text class="header-desc" x="0" y="56">Dual architectural deep-dive: strictly bounded LLM tool-calling boundaries with zero database mutation, alongside multi-tier fallback railway telemetry orchestration.</text>
+    
+    <!-- Meta badges on top right -->
+    <g transform="translate(970, -2)">
+      <rect class="pill-badge" x="0" y="0" width="135" height="24" rx="4"/>
+      <text class="pill-text" x="67" y="16" text-anchor="middle">Google Gemini API</text>
+      
+      <rect class="pill-badge" x="145" y="0" width="165" height="24" rx="4"/>
+      <text class="pill-text" x="227" y="16" text-anchor="middle">RailRadar + ChukChuk NTES</text>
+    </g>
+  </g>
+
+  <!-- ====================================================================== -->
+  <!-- SECTION A: AI ASSISTANT ARCHITECTURE (LEFT SPREAD)                     -->
+  <!-- ====================================================================== -->
+  <g transform="translate(60, 150)">
+    <!-- Section Topline -->
+    <text class="section-num" x="0" y="0">SUBSYSTEM 01 · COGNITIVE BARRIER</text>
+    <text class="section-title" x="0" y="24">RailFlow AI Assistant (Gemini Engine)</text>
+    <line x1="0" y1="36" x2="600" y2="36" stroke="#111110" stroke-width="1.5"/>
+
+    <!-- Step A1: User & Interface Input -->
+    <g transform="translate(0, 52)">
+      <rect class="card-box" x="0" y="0" width="170" height="95"/>
+      <g transform="translate(14, 18)">
+        <text class="card-label" x="0" y="0">CLIENT CONSOLE</text>
+        <text class="card-name" x="0" y="18">AiAssistantPanel</text>
+        <text class="card-desc" x="0" y="34">Passenger query:<br/>"Is 22436 on time &amp;<br/>seats in 3A for Friday?"</text>
+      </g>
+    </g>
+
+    <!-- Flow A1 -> A2 -->
+    <path class="flow-line" d="M 170 100 L 210 100" marker-end="url(#arrow-solid)"/>
+
+    <!-- Step A2: Express API Route & Sanitization -->
+    <g transform="translate(210, 52)">
+      <rect class="card-box" x="0" y="0" width="180" height="95"/>
+      <g transform="translate(14, 18)">
+        <text class="card-label" x="0" y="0">SERVER GATEWAY</text>
+        <text class="card-name" x="0" y="18">POST /api/ai/chat</text>
+        <text class="card-desc" x="0" y="34">Sanitizes &amp; truncates 1,000 chars. Bounds history to last 10 turns. Passes session.</text>
+      </g>
+    </g>
+
+    <!-- Flow A2 -> A3 -->
+    <path class="flow-line" d="M 390 100 L 430 100" marker-end="url(#arrow-solid)"/>
+
+    <!-- Step A3: AiService & System Instructions -->
+    <g transform="translate(430, 52)">
+      <rect class="card-box" x="0" y="0" width="180" height="95"/>
+      <g transform="translate(14, 18)">
+        <text class="card-label" x="0" y="0">PROMPT GUARD</text>
+        <text class="card-name" x="0" y="18">AiService Core</text>
+        <text class="card-desc" x="0" y="34">System Prompt locks grounding. Forbids mental fare math &amp; state mutations.</text>
+      </g>
+    </g>
+
+    <!-- Flow A3 down to Gemini -->
+    <path class="flow-line" d="M 520 147 L 520 180" marker-end="url(#arrow-solid)"/>
+    <rect class="pill-badge" x="480" y="156" width="80" height="16"/>
+    <text class="pill-text" x="520" y="167" text-anchor="middle">TOOL CALL REQ</text>
+
+    <!-- Step A4: Gemini Model Box -->
+    <g transform="translate(340, 180)">
+      <rect class="card-box-accent" x="0" y="0" width="270" height="90"/>
+      <g transform="translate(16, 18)">
+        <text class="card-label" x="0" y="0">EXTERNAL REASONING ENGINE</text>
+        <text class="card-name" x="0" y="18">Google Gemini Flash LLM</text>
+        <text class="card-desc" x="0" y="34">Evaluates natural language intent against registered tool signatures. Returns structured function call intent.</text>
+      </g>
+    </g>
+
+    <!-- Flow Gemini to Tool Registry -->
+    <path class="flow-line" d="M 340 225 L 180 225 L 180 300" marker-end="url(#arrow-solid)"/>
+    <rect class="boundary-badge" x="195" y="215" width="130" height="18"/>
+    <text class="boundary-text" x="260" y="227" text-anchor="middle">DISPATCH INTENTS</text>
+
+    <!-- Step A5: CONTROLLED TOOL REGISTRY (PRIMARY APPLICATION BOUNDARY) -->
+    <g transform="translate(0, 300)">
+      <!-- Tool Registry Master Outer Box -->
+      <rect class="card-box-accent" x="0" y="0" width="610" height="240"/>
+      
+      <!-- Header -->
+      <g transform="translate(16, 20)">
+        <text class="card-label" x="0" y="0">APPLICATION BOUNDARY · CONTROLLED TOOL REGISTRY</text>
+        <text class="card-name" x="0" y="18" font-size="14px">ToolRegistry.ts (Strictly Bounded Grounding Layer)</text>
+        <text class="card-desc" x="0" y="34">The LLM never directly touches SQLite. It can ONLY invoke 5 read-only, validated tool contracts:</text>
+      </g>
+
+      <!-- 5 Tools Grid -->
+      <g transform="translate(16, 75)">
+        <!-- Tool 1 -->
+        <rect class="tool-box" x="0" y="0" width="180" height="68"/>
+        <text class="card-name" x="10" y="18" font-size="11.5px"><tspan class="code-tag">search_trains</tspan></text>
+        <text class="card-desc" x="10" y="32" font-size="10px">Finds stations, routes, running days bitmask, and live seat availability.</text>
+
+        <!-- Tool 2 -->
+        <rect class="tool-box" x="195" y="0" width="180" height="68"/>
+        <text class="card-name" x="10" y="18" font-size="11.5px"><tspan class="code-tag">get_fare</tspan></text>
+        <text class="card-desc" x="10" y="32" font-size="10px">Returns authoritative server-side fare quotes with 5% GST in paise.</text>
+
+        <!-- Tool 3 -->
+        <rect class="tool-box" x="390" y="0" width="185" height="68"/>
+        <text class="card-name" x="10" y="18" font-size="11.5px"><tspan class="code-tag">get_booking_status</tspan></text>
+        <text class="card-desc" x="10" y="32" font-size="10px">Queries PNR. Enforces strict passenger ownership (no cross-user leakage).</text>
+
+        <!-- Tool 4 -->
+        <rect class="tool-box" x="0" y="78" width="280" height="68"/>
+        <text class="card-name" x="10" y="18" font-size="11.5px"><tspan class="code-tag">get_my_bookings</tspan></text>
+        <text class="card-desc" x="10" y="32" font-size="10px">Retrieves authenticated passenger's active travel history. Rejects guest queries with 401 requirement.</text>
+
+        <!-- Tool 5 -->
+        <rect class="tool-box" x="295" y="78" width="280" height="68"/>
+        <text class="card-name" x="10" y="18" font-size="11.5px"><tspan class="code-tag">get_train_running_status</tspan></text>
+        <text class="card-desc" x="10" y="32" font-size="10px">Queries live telemetry engine. Reports delay minutes and platform with provider source provenance.</text>
+      </g>
+    </g>
+
+    <!-- Flow Tool Registry down to Database & Logic -->
+    <path class="flow-line" d="M 305 540 L 305 570" marker-end="url(#arrow-solid)"/>
+
+    <!-- Step A6: Validated Server Services & SQLite -->
+    <g transform="translate(0, 570)">
+      <rect class="inner-box" x="0" y="0" width="610" height="90"/>
+      <g transform="translate(16, 18)">
+        <text class="card-label" x="0" y="0">GROUNDED DATA SOURCE (READ-ONLY EXECUTION)</text>
+        <text class="card-name" x="0" y="18">Prisma Database &amp; Tracking Service</text>
+        <text class="card-desc" x="0" y="34">Queries <tspan class="code-tag">prisma.trainRun</tspan>, <tspan class="code-tag">prisma.fareRule</tspan>, and <tspan class="code-tag">TrackingService</tspan>. Results sanitized and returned to Gemini for final natural language synthesis. Max 3 rounds prevent recursive tool loops.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ====================================================================== -->
+  <!-- SECTION B: LIVE TRACKING ARCHITECTURE (RIGHT SPREAD)                   -->
+  <!-- ====================================================================== -->
+  <g transform="translate(730, 150)">
+    <!-- Section Topline -->
+    <text class="section-num" x="0" y="0">SUBSYSTEM 02 · TELEMETRY CASCADE</text>
+    <text class="section-title" x="0" y="24">Multi-Tier Live Tracking &amp; Failover</text>
+    <line x1="0" y1="36" x2="610" y2="36" stroke="#111110" stroke-width="1.5"/>
+
+    <!-- Ingestion & Caching Step -->
+    <g transform="translate(0, 52)">
+      <rect class="card-box" x="0" y="0" width="610" height="85"/>
+      <g transform="translate(16, 18)">
+        <text class="card-label" x="0" y="0">ORCHESTRATION &amp; CACHE LAYER</text>
+        <text class="card-name" x="0" y="18">TrackingService &amp; In-Memory TTL Cache (cache.ts)</text>
+        <text class="card-desc" x="0" y="34">Client requests <tspan class="code-tag">GET /api/tracking/live/:trainNumber</tspan>. 60-second TTL cache absorbs duplicate burst queries with zero API budget consumption. Rate-limited to 10 req/min.</text>
+      </g>
+    </g>
+
+    <!-- Arrow Down from Cache -->
+    <path class="flow-line" d="M 305 137 L 305 165" marker-end="url(#arrow-solid)"/>
+    <rect class="pill-badge" x="250" y="145" width="110" height="16"/>
+    <text class="pill-text" x="305" y="156" text-anchor="middle">CACHE MISS → CASCADE</text>
+
+    <!-- Failover Stack Container -->
+    <g transform="translate(0, 165)">
+      <rect class="card-box-accent" x="0" y="0" width="610" height="375"/>
+      
+      <g transform="translate(16, 20)">
+        <text class="card-label" x="0" y="0">PROVIDER FAILOVER HIERARCHY</text>
+        <text class="card-name" x="0" y="18">4-Tier Resilient Telemetry Resolution</text>
+      </g>
+
+      <!-- Tier 1: RailRadar -->
+      <g transform="translate(16, 55)">
+        <rect class="inner-box" x="0" y="0" width="578" height="62" stroke="#10b981" stroke-width="1.5"/>
+        <g transform="translate(14, 14)">
+          <div style="display:flex;">
+            <text class="card-name" x="0" y="0" font-size="12px">Tier 1 (Primary): RailRadar Provider (railRadarProvider.ts)</text>
+          </div>
+          <text class="card-desc" x="0" y="18" font-size="10.5px">Fetches live train telemetry, station clearances, and GeoJSON corridor LineString rendered via Leaflet RouteMap.</text>
+          
+          <g transform="translate(470, -4)">
+            <rect class="status-pill" x="0" y="0" width="80" height="18"/>
+            <circle class="pulse-dot" cx="8" cy="9" r="3"/>
+            <text class="status-text" x="16" y="12">Live Feed</text>
+          </g>
+        </g>
+      </g>
+
+      <!-- Down Arrow 1 -> 2 -->
+      <path class="flow-dashed" d="M 305 117 L 305 133" marker-end="url(#arrow-dashed)"/>
+      <text class="pill-text" x="315" y="128" font-size="8px">IF FAILED / EXHAUSTED</text>
+
+      <!-- Tier 2: ChukChuk Microservice -->
+      <g transform="translate(16, 133)">
+        <rect class="inner-box" x="0" y="0" width="578" height="62"/>
+        <g transform="translate(14, 14)">
+          <text class="card-name" x="0" y="0" font-size="12px">Tier 2: ChukChuk NTES Scraper (chukChukProvider.ts)</text>
+          <text class="card-desc" x="0" y="18" font-size="10.5px">Proxies to local Python 3.10+ FastAPI microservice. Scrapes live official NTES operational tables with resilient parsing.</text>
+        </g>
+      </g>
+
+      <!-- Down Arrow 2 -> 3 -->
+      <path class="flow-dashed" d="M 305 195 L 305 211" marker-end="url(#arrow-dashed)"/>
+      <text class="pill-text" x="315" y="206" font-size="8px">IF UNAVAILABLE</text>
+
+      <!-- Tier 3: RapidAPI Gateway -->
+      <g transform="translate(16, 211)">
+        <rect class="inner-box" x="0" y="0" width="578" height="62"/>
+        <g transform="translate(14, 14)">
+          <text class="card-name" x="0" y="0" font-size="12px">Tier 3: RapidAPI Commercial Gateway (rapidApiProvider.ts)</text>
+          <text class="card-desc" x="0" y="18" font-size="10.5px">Commercial third-party fallback endpoint with strict monthly budget tracking headers preventing accidental paid overages.</text>
+        </g>
+      </g>
+
+      <!-- Down Arrow 3 -> 4 -->
+      <path class="flow-dashed" d="M 305 273 L 305 289" marker-end="url(#arrow-dashed)"/>
+      <text class="pill-text" x="315" y="284" font-size="8px">IF ALL APIS OFFLINE</text>
+
+      <!-- Tier 4: Timetable Fallback Engine -->
+      <g transform="translate(16, 289)">
+        <rect class="inner-box" x="0" y="0" width="578" height="66" stroke="#111110" stroke-width="1.5"/>
+        <g transform="translate(14, 14)">
+          <text class="card-name" x="0" y="0" font-size="12px">Tier 4 (Guaranteed Fallback): Timetable Engine (timetableProvider.ts)</text>
+          <text class="card-desc" x="0" y="18" font-size="10.5px">100% deterministic progression calculated from local Prisma SQLite schedules. Computes elapsed time, platform halts, and distance offsets with zero external network dependency.</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Normalization Step -->
+    <path class="flow-line" d="M 305 540 L 305 570" marker-end="url(#arrow-solid)"/>
+
+    <g transform="translate(0, 570)">
+      <rect class="card-box" x="0" y="0" width="610" height="90"/>
+      <g transform="translate(16, 18)">
+        <text class="card-label" x="0" y="0">OUTPUT CONTRACT · DATA NORMALIZATION</text>
+        <text class="card-name" x="0" y="18">NormalizedRunningStatus Contract</text>
+        <text class="card-desc" x="0" y="34">Every provider maps to identical schema: <tspan class="code-tag">currentStation</tspan>, <tspan class="code-tag">delayMinutes</tspan>, <tspan class="code-tag">platformNumber</tspan>, <tspan class="code-tag">distanceKm</tspan>, <tspan class="code-tag">isLive</tspan>, and <tspan class="code-tag">providerName</tspan>. Client UI seamlessly renders without knowing source.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ====================================================================== -->
+  <!-- BOTTOM ARCHITECTURAL INVARIANTS STRIP                                  -->
+  <!-- ====================================================================== -->
+  <g transform="translate(60, 875)">
+    <!-- Column 1 -->
+    <g transform="translate(0, 0)">
+      <text class="card-label" x="0" y="0">AI ARCHITECTURAL INVARIANT</text>
+      <text class="card-name" x="0" y="18">Zero Database Mutation Access</text>
+      <text class="card-desc" x="0" y="33">Gemini functions exclusively through 5 read-only queries with enforced ownership isolation.</text>
+    </g>
+
+    <!-- Divider -->
+    <line x1="390" y1="0" x2="390" y2="40" stroke="rgba(17, 17, 16, 0.12)" stroke-width="1"/>
+
+    <!-- Column 2 -->
+    <g transform="translate(420, 0)">
+      <text class="card-label" x="0" y="0">RATE LIMITING &amp; ZERO COST</text>
+      <text class="card-name" x="0" y="18">10 Req/Min · 1,000 Req/Month Budget</text>
+      <text class="card-desc" x="0" y="33">In-memory caching and telemetry header tracking ensure zero accidental API overages.</text>
+    </g>
+
+    <!-- Divider -->
+    <line x1="860" y1="0" x2="860" y2="40" stroke="rgba(17, 17, 16, 0.12)" stroke-width="1"/>
+
+    <!-- Column 3 -->
+    <g transform="translate(890, 0)">
+      <text class="card-label" x="0" y="0">TELEMETRY AVAILABILITY</text>
+      <text class="card-name" x="0" y="18">Deterministic Timetable Fallback</text>
+      <text class="card-desc" x="0" y="33">Guarantees live train tracking UX remains 100% operational even during total upstream API outages.</text>
+    </g>
+  </g>
+</svg>

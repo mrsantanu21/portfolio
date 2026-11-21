@@ -1,0 +1,64 @@
+%% RailFlow System Architecture Diagram
+%% Matches editorial technical spread: Client -> Application -> Data -> External Services
+graph TD
+    classDef client fill:#fcfcf9,stroke:#111110,stroke-width:1px,stroke-dasharray: 0,color:#111110
+    classDef server fill:#fcfcf9,stroke:#111110,stroke-width:1px,stroke-dasharray: 0,color:#111110
+    classDef data fill:#fcfcf9,stroke:#111110,stroke-width:1px,stroke-dasharray: 0,color:#111110
+    classDef ext fill:#fcfcf9,stroke:#111110,stroke-width:1px,stroke-dasharray: 0,color:#111110
+
+    subgraph SEC1["01 CLIENT TIER"]
+        direction TB
+        C1["React 19 / TypeScript (Vite)"]
+        C2["TanStack Query v5 Cache & Routing"]
+        C3["Leaflet GeoJSON Live Track Map"]
+        C4["AI Assistant Chat Interface"]
+    end
+
+    subgraph SEC2["02 APPLICATION BACKEND"]
+        direction TB
+        S1["Express 4.21 Gateway (TypeScript)"]
+        S2["Argon2id Auth & JWT Cookie Guard"]
+        S3["Zod Schema Validation & Error Handler"]
+        S4["Inventory Collision Engine (Segment Math)"]
+        S5["Booking & Cancellation Manager"]
+        S6["Deterministic Fare Engine"]
+        S7["Controlled AI Tool Registry (5 Tools)"]
+    end
+
+    subgraph SEC3["03 PERSISTENCE TIER"]
+        direction TB
+        D1["Prisma ORM 5.22 Client"]
+        D2["SQLite dev.db (WAL Mode)"]
+        D3["Models: User, Train, Station, SeatAllocation, Booking, Payment, AuditLog"]
+    end
+
+    subgraph SEC4["04 EXTERNAL SERVICES & TELEMETRY"]
+        direction TB
+        E1["Google Gemini 2.5 Flash (via @google/genai)"]
+        E2["Tier 1: RailRadar Real-time API"]
+        E3["Tier 2: ChukChuk FastAPI NTES Scraper"]
+        E4["Tier 3: RapidAPI Gateway"]
+        E5["Tier 4: Timetable Math Fallback Engine"]
+    end
+
+    C1 -->|REST / JSON Requests| S1
+    S1 --> S2 --> S3
+    S3 --> S4
+    S3 --> S5
+    S3 --> S6
+    S3 --> S7
+
+    S4 -->|prisma.$transaction| D1
+    S5 -->|prisma.$transaction| D1
+    D1 --> D2
+
+    S7 -->|Strict Read-Only Execution| E1
+    S1 -->|Multi-tier Telemetry Failover| E2
+    E2 -.->|Failover| E3
+    E3 -.->|Failover| E4
+    E4 -.->|Failover| E5
+
+    class C1,C2,C3,C4 client
+    class S1,S2,S3,S4,S5,S6,S7 server
+    class D1,D2,D3 data
+    class E1,E2,E3,E4,E5 ext
